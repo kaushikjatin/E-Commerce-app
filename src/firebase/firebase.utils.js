@@ -31,7 +31,7 @@ const config={
 
     const userRef= await firestore.doc('/users/'+userAuth.uid);
     const snapshot=await userRef.get();
-    if(!snapshot.exists)
+    if(!snapshot.exists) // if sapshot onot exist
     {
       const {displayName,email}=userAuth;
       const createdAt=new Date();

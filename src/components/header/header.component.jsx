@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import './header.styles.scss';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component'
+import {selectCartHidden} from '../../redux/cart/cart.selectors'
+import {selectCurrentUser} from '../../redux/user/user.selectors'
 
 const Header=({currentUser,hidden})=>{
     return(
@@ -31,8 +33,8 @@ const Header=({currentUser,hidden})=>{
 
 
 const mapStateToProps= (state)=>({   // mapStateToProps function will br called with argument as the state of the store...which is a big giant object
-        currentUser:state.user.currentUser,
-        hidden:state.cart.hidden
+        currentUser:selectCurrentUser(state),
+        hidden:selectCartHidden(state)
     }) // this function will return an object which will be given to our Header component as props automatically.
 
 export default connect(mapStateToProps)(Header);

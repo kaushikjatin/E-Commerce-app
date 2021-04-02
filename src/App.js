@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './components/header/header.component';
 import Homepage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component.jsx';
+import checkout from './pages/checkout/checkout.component'
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import {Route,Switch,Redirect} from 'react-router-dom';
 import {auth } from './firebase/firebase.utils';
@@ -9,6 +10,7 @@ import {createUserProfileDocument} from './firebase/firebase.utils';
 import './App.css';
 import {setCurrentUser} from './redux/user/user.actions';
 import {connect} from 'react-redux'
+import {selectCurrentUser} from './redux/user/user.selectors'
 
 class App extends React.Component
 {
@@ -44,8 +46,9 @@ class App extends React.Component
         <Header/>
         <Switch>
           <Route exact path='/' component={Homepage}></Route>
-          <Route exact path='/shop' component={ShopPage}></Route>
+          <Route path='/shop' component={ShopPage}></Route>
           <Route exact path='/signin' render={() => this.props.currentUser ? (<Redirect to='/' />) : (<SignInAndSignUpPage/>)}></Route>
+          <Route exact path='/checkout' component={checkout}></Route>
         </Switch>
       </div>
     )
@@ -63,7 +66,7 @@ const mapDispatchToProps = (dispatch) =>({
 // and the dispatch function will pass the action object (which will be returned by our action creater function) to every reducer.
 
 const mapStateToProps= (state)=>({   // mapStateToProps function will br called with argument as the state of the store...which is a big giant object
-  currentUser:state.user.currentUser 
+  currentUser:selectCurrentUser(state) 
 }) // this function will return an object which will be given to our Header component as props automatically.
 
 export default connect(mapStateToProps,mapDispatchToProps)(App);

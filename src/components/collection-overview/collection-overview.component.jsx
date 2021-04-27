@@ -14,7 +14,7 @@ export const CollectionOverview =({collections})=>{
     )
 }
 
-const mapStateToProps = (state)=>({
-    collections:selectCollection(state)
-})
+const mapStateToProps = (state)=>{
+    return{collections:selectCollection(state)}
+}
 export default connect(mapStateToProps)(CollectionOverview);

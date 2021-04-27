@@ -50,5 +50,36 @@ const config={
     return userRef; 
   }
 
+
+  export const addDocumentToCollection = async(collectionPath,dataArray)=>{
+    const collecRef=firestore.collection(collectionPath);
+    const batch = firestore.batch();
+    dataArray.forEach(obj =>{
+      const newDocRef=collecRef.doc() // this will give us a new doc referece
+      batch.set(newDocRef,obj)
+    })
+
+    return await batch.commit() // it is aasync call and returns a promise .
+  }
+
+  export const convertSnapshotToMap =(snapshot) =>{
+    const transformedData= snapshot.docs.map(doc =>{
+      const {title,items}= doc.data();
+      return {
+        id:doc.id,
+        routeName:encodeURI(title.toLowerCase()),
+        title,
+        items
+      }
+    })
+
+
+    const final_map= transformedData.reduce((reduced_value,collection)=>{
+        reduced_value[collection.title.toLowerCase()]=collection;
+        return reduced_value;
+    },{})
+    return final_map;
+  }
+
   export default firebase;
 

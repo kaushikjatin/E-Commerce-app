@@ -29,8 +29,8 @@ const CartDropdown = ({cartItems,history,dispatch}) =>(
 )
 
 
-const mapstatetoprops=(state)=>({
-        cartItems:selectCartItems(state)
-})
+const mapstatetoprops=(state)=>{
+        return {cartItems:selectCartItems(state)}
+}
 export default withRouter(connect(mapstatetoprops)(CartDropdown));
 

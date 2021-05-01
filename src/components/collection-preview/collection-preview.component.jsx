@@ -6,8 +6,7 @@ import './collection-preview.styles.scss'
 const CollectionPreview=({title,items,history})=>{
     return(
         <div className='collection-preview'>
-            <Link to={`shop/${title.toLowerCase()}`}>{title}</Link>
-            {/* <h1 onClick={()=>history.push(title.toLowerCase())}>{title}</h1> */}
+            <Link className='link' to={`shop/${title.toLowerCase()}`}>{title}</Link>
             <div className='preview'>
                 {
                     items.filter((item,ind)=> ind<4)

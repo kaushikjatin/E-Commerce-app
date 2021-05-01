@@ -48,7 +48,7 @@ class App extends React.Component
 
   render(){
     return(
-      <div>
+      <div className='App'>
         <Header/>
         <Switch>
           {/* <Route path="/users" component={Users} />

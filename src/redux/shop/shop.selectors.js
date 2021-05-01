@@ -7,6 +7,11 @@ export const selectCollection = createSelector(
     (shop) => shop.collection ? Object.keys(shop.collection).map(key_name=>shop.collection[key_name]) : []
 )
 
+export const selectCollectionsFetching = createSelector(
+    [selectshop],
+    (shop) => shop.isFetching
+)
+
 export const selectSpecificCollection = (url_param) =>(
     createSelector(
         [selectshop],

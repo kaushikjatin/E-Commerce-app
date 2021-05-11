@@ -5,6 +5,8 @@ import {selectSpecificCollection} from '../../redux/shop/shop.selectors'
 import {connect} from 'react-redux'
 
 const CollectionPage=({collection})=>{
+    if(collection==null)
+        return(<div></div>);
     return(
         <div className='collection-page'>
             <h2>{collection.title}</h2>

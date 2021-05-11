@@ -11,7 +11,6 @@ const CollectionOverviewOrSpinner = WithSpinner(CollectionOverview);
 const CollectionPageOrSpinner = WithSpinner(CollectionPage);
 class ShopPage extends React.Component
 {
-
     componentDidMount(){
         const {fetchCollectionsAsync} = this.props;
         fetchCollectionsAsync();
@@ -21,8 +20,10 @@ class ShopPage extends React.Component
         const {match}=this.props;
         return(
             <div className='shop-page'>
-                <Route exact path={`${match.path}`} render = {(props) => <CollectionOverviewOrSpinner isLoading={this.props.isFetching} {...props}></CollectionOverviewOrSpinner>}></Route>
-                <Route exact path={`${match.path}/:collectionId`} render = {(props) => <CollectionPageOrSpinner isLoading={this.props.isFetching} {...props}></CollectionPageOrSpinner>}></Route>
+                <Route exact path={`${match.path}`} render = {(props_passed_by_route) => <CollectionOverviewOrSpinner isLoading={this.props.isFetching} {...props_passed_by_route}></CollectionOverviewOrSpinner>}></Route>
+                <Route exact path={`${match.path}/:collectionId`} render = {(props_passed_by_route) => <CollectionPageOrSpinner isLoading={this.props.isFetching} {...props_passed_by_route}></CollectionPageOrSpinner>}></Route>
+                {/* when we use the render to pass a componenet in the <route>,,,then the <route> componenet doesnot pass match,history,location into the props of the compoenet but it passes them
+                into the function as arguments....and hence we will then pass the props into the componenets */}
             </div>
         )
     }

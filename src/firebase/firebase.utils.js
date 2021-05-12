@@ -2,9 +2,17 @@
 import firebase from 'firebase/app'; //this base import is useful because all the auth and firesotre are automatially connected to the firebase keyword which we impoted
 import 'firebase/firestore';
 import 'firebase/auth';
-import {firebase_config} from '../important_data'
 
-const config=firebase_config
+
+const config={
+  apiKey: process.env.REACT_APP_ApiKey,
+  authDomain: process.env.REACT_APP_AuthDomain,
+  projectId: process.env.REACT_APP_ProjectId,
+  storageBucket: process.env.REACT_APP_StorageBucket,
+  messagingSenderId: process.env.REACT_APP_MessagingSenderId,
+  appId: process.env.REACT_APP_AppId,
+  measurementId: process.env.REACT_APP_MeasurementId
+}
 
   firebase.initializeApp(config);
 

@@ -1,6 +1,6 @@
 .cart-dropdown 
 {
-    border: 1px solid black;
+    border: 1px solid white;
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -9,7 +9,7 @@
     top: 90px;
     right: 40px;
     z-index: 5;
-    background-color: white;
+    background-color: #131313;
     padding: 20px;
 }
 .empty-message 

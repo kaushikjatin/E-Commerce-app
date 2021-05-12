@@ -11,13 +11,13 @@
      .price 
      {  
         position : absolute;
-        top: 20px;
-        left: 70px;
+        top: 0px;
+        left: 30px;
         font-size: 6em;
         font-weight: 900;
         color: #fff;
         font-style: italic;
-        opacity: 0;
+        opacity: 0.3;
         transition : 1s;
      }
 
@@ -37,7 +37,7 @@
      .product 
      {
         position: absolute;
-        max-width: 200px;
+        max-height: 250px;
         top: 60%;
         left: 50%;
         z-index: 11;
@@ -64,15 +64,14 @@
 
      &:hover
      {
-        .price
+        .price 
         {
-            opacity: 0.3;
+           top: 20px;
         }
-
         .name
         {
             transition: 0.5s;
-            top: 20px;
+            top: 40px;
             opacity: 1;
         }
         .add-to-cart

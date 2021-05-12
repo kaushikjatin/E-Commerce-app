@@ -15,11 +15,15 @@ margin-bottom: 25px;`
 
 export const LogoContainer =styled(Link)`
 height: 100%;
-width: 70px;
-padding: 25px;`
+width: 90px;
+padding: 20px;
+padding-top:10px;
+background:white;
+overflow:hidden;
+border-radius:50%;`
 
 export const OptionsContainer = styled.div`
-width: 20%;
+width: 30%;
 height: 100%;
 display: flex;
 align-items: center;
@@ -31,6 +35,6 @@ ${OptionsContainer}`
 
 export const OptionLink =styled(Link)`
 ${OptionsContainer};
-color: black;
+color: white;
 text-decoration: none;`
 

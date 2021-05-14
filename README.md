@@ -1,3 +1,21 @@
+# E_Commerce_App
+    Hosted on [Heroku](https://crwn-----clothing.herokuapp.com/)
+
+## About 
+    A full stack ecommerce application built using react. Used Firebase as a Database and Stripe for payments.
+    It contains cool UI which is updated regularly.Provides features like Add-To_cart,Pay etc.
+
+## Product-Card
+    A 3dimnsional product-card which works with gyroscore in mobiles and mounse pointer in computer.
+    [Product-Card](./src/assets/product_cart.jpg)
+
+    Payment added by stripe.
+    [Payment Board](./src/assets/Payment_by_Stripe.jpg)
+
+    Cart-Checkout Page 
+    [Cart-Page](./src/assets/Cart_Checkout.jpg)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -14,10 +32,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 

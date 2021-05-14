@@ -1,5 +1,6 @@
 # E_Commerce_App
-    Hosted on [Heroku](https://crwn-----clothing.herokuapp.com/)
+
+    Hosted on [Heroku](https://crwn-----clothing.herokuapp.com/).
 
 ## About 
     A full stack ecommerce application built using react. Used Firebase as a Database and Stripe for payments.
@@ -7,13 +8,13 @@
 
 ## Product-Card
     A 3dimnsional product-card which works with gyroscore in mobiles and mounse pointer in computer.
-    [Product-Card](./src/assets/product_cart.jpg)
+    ![Product-Card](./src/assets/product_cart.jpg)
 
     Payment added by stripe.
-    [Payment Board](./src/assets/Payment_by_Stripe.jpg)
+    ![Payment Board](./src/assets/Payment_by_Stripe.jpg)
 
     Cart-Checkout Page 
-    [Cart-Page](./src/assets/Cart_Checkout.jpg)
+    ![Cart-Page](./src/assets/Cart_Checkout.jpg)
 
 
 # Getting Started with Create React App

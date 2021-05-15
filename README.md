@@ -2,8 +2,8 @@
 Hosted on [Heroku](https://crwn-----clothing.herokuapp.com/).
 
 ## About 
-A full stack ecommerce application built using react. Used Firebase as a Database and Stripe for payments.
-It contains cool UI which is updated regularly.Provides features like Add-To_cart,Pay etc.
+    A full stack ecommerce application built using react. Used Firebase as a Database and Stripe for payments.
+    It contains cool UI which is updated regularly.Provides features like Add-To_cart,Pay etc.
 
 ## Product-Card
 A 3dimnsional product-card which works with gyroscore in mobiles and mounse pointer in computer.

@@ -23,15 +23,12 @@ position:relative;
 export const LogoContainer =styled(Link)`
 height: 100%;
 width: 15%;
-padding: 20px;
 box-sizing:border-box;
 padding-top:10px;
-background:white;
 display:flex;
 align-items:center;
 justify-content:center;
-overflow:hidden;
-border-radius:50%;`
+overflow:hidden;`
 
 
 export const OptionsContainer = styled.div`

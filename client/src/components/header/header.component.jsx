@@ -27,8 +27,8 @@ const Header=({currentUser,hidden})=>{
                 </OptionsContainer>)
             }
             <Right_Side_Container>
-                    <CartIcon></CartIcon>
                     <AiFillDatabase1 onClick={() =>setHiddenMenuBar(!hiddenMenuBar)}></AiFillDatabase1>
+                    <CartIcon></CartIcon>
             </Right_Side_Container>
             {
                 hidden? null : (<CartDropdown></CartDropdown>)

@@ -41,10 +41,8 @@ app.post('/payment',(req,res)=>{
         currency:'usd',
         description:"Learning to integrate payments"
     };
-    console.log("POST REQUEST");
     stripe.charges.create(body,(stripeerr,striperes)=>{
         if(stripeerr){
-            console.log(stripeerr);
             res.status(500).send({error:stripeerr});
         }
         else 

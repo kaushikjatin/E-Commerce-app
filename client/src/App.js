@@ -8,38 +8,42 @@ import {Route,Switch,Redirect} from 'react-router-dom';
 import {auth } from './firebase/firebase.utils';
 import {createUserProfileDocument} from './firebase/firebase.utils';
 import './App.css';
-import {setCurrentUser} from './redux/user/user.actions';
+import {checkUserSession} from './redux/user/user.actions';
 import {connect} from 'react-redux'
 import {selectCurrentUser} from './redux/user/user.selectors'
-
 class App extends React.Component
 {
   unsubscribefromauth=null;
   componentDidMount()  // componenetdidMount function is only called once in the lifetime..in the start when the componenet is created by DOM for 1st time.
   {
-      const {setCurrentUser}=this.props;
+      const {checkUserSession}=this.props;
+      checkUserSession();
       // When subscribing to a new listener, such as onAuthStateChanged, a new reference to it is made in memory which has no knowledge of the 
       // React environment. If a component within your app mounts and subscribes, the method will still trigger even if your component unmounted. 
       // If this happens and you're updating state, you'll get a yellow box warning.
 
       // To get around this, Firebase returns an unsubscribe function to every subscriber method, which when calls removes the subscription from 
       // memory.
-      this.unsubscribefromauth=auth.onAuthStateChanged(async userAuth => {
-          if(userAuth)
-          {  
-              const userRef=await createUserProfileDocument(userAuth);
-              userRef.onSnapshot(snapshot => {  //this onSnapshot() method returns the snapshot object of the document on whose reference it is called.
-                  setCurrentUser({
-                      id:snapshot.id,
-                      ...snapshot.data()
-                    })
-                  }) 
-          }
-          else 
-          {
-            setCurrentUser(null);
-          }
-       });
+
+
+
+      
+      // this.unsubscribefromauth=auth.onAuthStateChanged(async userAuth => {
+      //     if(userAuth)
+      //     {  
+      //         const userRef=await createUserProfileDocument(userAuth);
+      //         userRef.onSnapshot(snapshot => {  //this onSnapshot() method returns the snapshot object of the document on whose reference it is called.
+      //             setCurrentUser({
+      //                 id:snapshot.id,
+      //                 ...snapshot.data()
+      //               })
+      //             }) 
+      //     }
+      //     else 
+      //     {
+      //       setCurrentUser(null);
+      //     }
+      //  });
   }
 
   componentWillUnmount(){
@@ -73,7 +77,7 @@ class App extends React.Component
 // mapDispatchToProps returns us a object which have an element 'setCurrentUser' which points to a function which we can call 
 // whenever we want to update our 
 const mapDispatchToProps = (dispatch) =>({
-    setCurrentUser: (user) => dispatch(setCurrentUser(user))   
+    checkUserSession: (user) => dispatch(checkUserSession())   
 })
 
 // so whenever this SetCurrentUser pointing function will be called with user as the argument...then it will call the dispatch function

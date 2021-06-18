@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './sign-up.styles.scss';
 import FormInput from '../form-input/form-input.component'
 import CustomButton from '../custom-button/custom-button.component';
 import {auth,createUserProfileDocument} from '../../firebase/firebase.utils';
+import {SignUpStart} from '../../redux/user/user.actions'
 
 class SignUp extends React.Component
 {
@@ -18,26 +20,29 @@ class SignUp extends React.Component
     }
 
     handleSubmit=async event=>{
+        const {signUpStart}=this.props;
         event.preventDefault();
         const {displayName,password,confirmPassword,email}=this.state;
         if(password != confirmPassword){
             alert("Password Donot Match")
             return;
         }
-        try 
-        {
-            const {user} = await auth.createUserWithEmailAndPassword(email,password);
-            await createUserProfileDocument(user,{displayName});
-            this.setState({
-                email:'',
-                password:'',
-                confirmPassword:'',
-                displayName:''
-                })
-        }catch(error)
-        {
-            console.log(error);
-        }
+
+        signUpStart(email,password,displayName);
+        // try 
+        // {
+        //     const {user} = await auth.createUserWithEmailAndPassword(email,password);
+        //     await createUserProfileDocument(user,{displayName});
+        //     this.setState({
+        //         email:'',
+        //         password:'',
+        //         confirmPassword:'',
+        //         displayName:''
+        //         })
+        // }catch(error)
+        // {
+        //     console.log(error);
+        // }
 
     }
 
@@ -92,4 +97,8 @@ class SignUp extends React.Component
     }
 }
 
-export default SignUp;
+const mapDispatchToProps = (dispatch)=>({
+    signUpStart:(email,password,displayName)=>dispatch(SignUpStart({email,password,displayName}))
+})
+
+export default connect(null,mapDispatchToProps)(SignUp);

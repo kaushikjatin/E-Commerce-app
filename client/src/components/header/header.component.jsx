@@ -8,8 +8,9 @@ import CartDropdown from '../cart-dropdown/cart-dropdown.component'
 import {selectCartHidden} from '../../redux/cart/cart.selectors'
 import {selectCurrentUser} from '../../redux/user/user.selectors'
 import {HeaderContainer , OptionDiv,OptionLink,OptionsContainer,LogoContainer,AiFillDatabase1,Right_Side_Container} from './header.styles.jsx'
+import { SignOutStart } from '../../redux/user/user.actions';
 
-const Header=({currentUser,hidden})=>{
+const Header=({currentUser,hidden,SignOutStart})=>{
     const [hiddenMenuBar,setHiddenMenuBar]=useState(false);
     return(
         <HeaderContainer>
@@ -21,7 +22,7 @@ const Header=({currentUser,hidden})=>{
                     <OptionLink to='/shop'>Shop</OptionLink>
                     <OptionLink to='/shop'>Contact</OptionLink>
                     {currentUser ?(
-                            <OptionDiv onClick={()=>auth.signOut()}>Sign Out</OptionDiv>
+                            <OptionDiv type='button' onClick={SignOutStart}>Sign Out</OptionDiv>
                     ):(<OptionLink to='/signin'>Sign In</OptionLink>)
                     }
                 </OptionsContainer>)
@@ -43,4 +44,8 @@ const mapStateToProps= (state)=>({   // mapStateToProps function will br called 
         hidden:selectCartHidden(state),
     }) // this function will return an object which will be given to our Header component as props automatically.
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = (dispatch)=>({
+    SignOutStart:()=>dispatch(SignOutStart())
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(Header);

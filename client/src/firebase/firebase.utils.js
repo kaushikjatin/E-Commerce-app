@@ -16,13 +16,12 @@ const config={
 
   firebase.initializeApp(config);
 
-  export const auth=firebase.auth();
-  export const firestore=firebase.firestore();
+  const auth=firebase.auth();
+  const firestore=firebase.firestore();
 
-  const provider=new firebase.auth.GoogleAuthProvider();
-  provider.setCustomParameters({prompt:'select_account'});
-  export const signInWithGoogle=()=>auth.signInWithPopup(provider);
-
+  const googleprovider=new firebase.auth.GoogleAuthProvider();
+  googleprovider.setCustomParameters({prompt:'select_account'});
+  
   export const createUserProfileDocument=async(userAuth,additionalData)=>{
     if(!userAuth)// if user is signed out...i.e..this function being called on signinout of user
     {
@@ -72,9 +71,7 @@ const config={
         title,
         items
       }
-    })
-
-
+    });
     const final_map= transformedData.reduce((reduced_value,collection)=>{
         reduced_value[collection.title.toLowerCase()]=collection;
         return reduced_value;
@@ -82,5 +79,14 @@ const config={
     return final_map;
   }
 
-  export default firebase;
+  export const getCurrentUser =()=>{
+    return new Promise((resolve,reject)=>{
+      const unsubscribe = auth.onAuthStateChanged(userAuth => {
+        unsubscribe();
+        resolve(userAuth);
+      },reject);
+    })
+  }
 
+  export default firebase;
+  export {googleprovider,auth,firestore};

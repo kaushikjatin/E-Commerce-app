@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import Header from './components/header/header.component';
 import Homepage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component.jsx';
@@ -11,46 +11,48 @@ import './App.css';
 import {checkUserSession} from './redux/user/user.actions';
 import {connect} from 'react-redux'
 import {selectCurrentUser} from './redux/user/user.selectors'
-class App extends React.Component
-{
-  unsubscribefromauth=null;
-  componentDidMount()  // componenetdidMount function is only called once in the lifetime..in the start when the componenet is created by DOM for 1st time.
-  {
-      const {checkUserSession}=this.props;
-      checkUserSession();
-      // When subscribing to a new listener, such as onAuthStateChanged, a new reference to it is made in memory which has no knowledge of the 
-      // React environment. If a component within your app mounts and subscribes, the method will still trigger even if your component unmounted. 
-      // If this happens and you're updating state, you'll get a yellow box warning.
+const App =({checkUserSession})=>{
+  useEffect(()=>{
+    checkUserSession();
+  },[])
 
-      // To get around this, Firebase returns an unsubscribe function to every subscriber method, which when calls removes the subscription from 
-      // memory.
+  
+  // componentDidMount()  // componenetdidMount function is only called once in the lifetime..in the start when the componenet is created by DOM for 1st time.
+  // {
+  //     const {checkUserSession}=this.props;
+  //     checkUserSession();
+  //     // When subscribing to a new listener, such as onAuthStateChanged, a new reference to it is made in memory which has no knowledge of the 
+  //     // React environment. If a component within your app mounts and subscribes, the method will still trigger even if your component unmounted. 
+  //     // If this happens and you're updating state, you'll get a yellow box warning.
+
+  //     // To get around this, Firebase returns an unsubscribe function to every subscriber method, which when calls removes the subscription from 
+  //     // memory.
 
 
 
       
-      // this.unsubscribefromauth=auth.onAuthStateChanged(async userAuth => {
-      //     if(userAuth)
-      //     {  
-      //         const userRef=await createUserProfileDocument(userAuth);
-      //         userRef.onSnapshot(snapshot => {  //this onSnapshot() method returns the snapshot object of the document on whose reference it is called.
-      //             setCurrentUser({
-      //                 id:snapshot.id,
-      //                 ...snapshot.data()
-      //               })
-      //             }) 
-      //     }
-      //     else 
-      //     {
-      //       setCurrentUser(null);
-      //     }
-      //  });
-  }
+  //     this.unsubscribefromauth=auth.onAuthStateChanged(async userAuth => {
+  //         if(userAuth)
+  //         {  
+  //             const userRef=await createUserProfileDocument(userAuth);
+  //             userRef.onSnapshot(snapshot => {  //this onSnapshot() method returns the snapshot object of the document on whose reference it is called.
+  //                 setCurrentUser({
+  //                     id:snapshot.id,
+  //                     ...snapshot.data()
+  //                   })
+  //                 }) 
+  //         }
+  //         else 
+  //         {
+  //           setCurrentUser(null);
+  //         }
+  //      });
+  // }
 
-  componentWillUnmount(){
-    this.unsubscribefromauth();
-  }
+  // componentWillUnmount(){
+  //   this.unsubscribefromauth();
+  // }
 
-  render(){
     return(
       <div className='App'>
         <Header/>
@@ -71,7 +73,6 @@ class App extends React.Component
       </div>
     )
   }
-}
 
 
 // mapDispatchToProps returns us a object which have an element 'setCurrentUser' which points to a function which we can call 

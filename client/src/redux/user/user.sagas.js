@@ -38,7 +38,6 @@ function* emailSignInHandler({payload}){
     }
 }
 
-
 function* userSessionHandler(){
     try{
         console.log("came here");
@@ -89,7 +88,6 @@ function* SignUpStart(){
 function* checkUserSession(){
     yield takeLatest(UserActionTypes.CHECK_USER_SESSION,userSessionHandler);
 }
-
 
 export function* rootUserSaga(){
     yield all([call(googleSignInStart),call(emailSignInStart),call(checkUserSession),call(SignOutStart),call(SignUpStart)])

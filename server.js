@@ -11,7 +11,7 @@ app.use(cors())
 
 
 if(process.env.NODE_ENV!='production') require('dotenv').config() 	// this line sets the environment variables
-const port = process.env.PORT || 5000		// if it it hosted on heroku then it will take the port of heroku otherwise 5000
+const port = process.env.PORT || 6000		// if it it hosted on heroku then it will take the port of heroku otherwise 5000
 const stripe=require('stripe')(process.env.STRIPE_TEST_KEY);
 
 

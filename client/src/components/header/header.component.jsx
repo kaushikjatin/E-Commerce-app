@@ -7,34 +7,27 @@ import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component'
 import {selectCartHidden} from '../../redux/cart/cart.selectors'
 import {selectCurrentUser} from '../../redux/user/user.selectors'
-import {HeaderContainer , OptionDiv,OptionLink,OptionsContainer,LogoContainer,AiFillDatabase1,Right_Side_Container} from './header.styles.jsx'
+import {HeaderContainer,OptionLink,OptionsContainer,LogoContainer} from './header.styles.jsx'
 import { SignOutStart } from '../../redux/user/user.actions';
 
 const Header=({currentUser,hidden,SignOutStart})=>{
     const [hiddenMenuBar,setHiddenMenuBar]=useState(false);
     return(
         <HeaderContainer>
-            <LogoContainer to='/'>
-                <Logo/>
-            </LogoContainer>
-            {
-                hiddenMenuBar? null :( <OptionsContainer>
-                    <OptionLink to='/shop'>Shop</OptionLink>
-                    <OptionLink to='/shop'>Contact</OptionLink>
-                    {currentUser ?(
-                            <OptionDiv type='button' onClick={SignOutStart}>Sign Out</OptionDiv>
-                    ):(<OptionLink to='/signin'>Sign In</OptionLink>)
-                    }
-                </OptionsContainer>)
-            }
-            <Right_Side_Container>
-                    <AiFillDatabase1 onClick={() =>setHiddenMenuBar(!hiddenMenuBar)}></AiFillDatabase1>
-                    <CartIcon></CartIcon>
-            </Right_Side_Container>
-            {
-                hidden? null : (<CartDropdown></CartDropdown>)
-            }
-        </HeaderContainer>
+            <OptionsContainer>
+                <OptionLink to='/shop'>SHOP</OptionLink>
+                <OptionLink to='/shop'>CONTACT</OptionLink>
+                {currentUser ? (
+                    <OptionLink as='div' onClick={SignOutStart}>
+                    SIGN OUT
+                    </OptionLink>
+                ) : (
+                    <OptionLink to='/signin'>SIGN IN</OptionLink>
+                )}
+                <CartIcon />
+            </OptionsContainer>
+            {hidden ? null : <CartDropdown />}
+  </HeaderContainer>
     )
 }
 

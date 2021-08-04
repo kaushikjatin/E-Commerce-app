@@ -11,7 +11,7 @@ import './App.css';
 import {checkUserSession} from './redux/user/user.actions';
 import {connect} from 'react-redux'
 import {selectCurrentUser} from './redux/user/user.selectors'
-const App =({checkUserSession})=>{
+const App =({checkUserSession,currentUser})=>{
   useEffect(()=>{
     checkUserSession();
   },[])
@@ -67,7 +67,7 @@ const App =({checkUserSession})=>{
            Users route again! */}
           <Route exact path='/' component={Homepage}></Route>
           <Route path='/shop' component={ShopPage}></Route>
-          <Route exact path='/signin' render={() => this.props.currentUser ? (<Redirect to='/' />) : (<SignInAndSignUpPage/>)}></Route>
+          <Route exact path='/signin' render={() => currentUser ? (<Redirect to='/' />) : (<SignInAndSignUpPage/>)}></Route>
           <Route exact path='/checkout' component={checkout}></Route>
         </Switch>
       </div>

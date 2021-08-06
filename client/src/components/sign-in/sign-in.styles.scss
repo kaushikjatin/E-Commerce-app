@@ -1,10 +1,24 @@
 .sign-in
 {
-    width: 380px;
+    width: 35%;
+    @media only screen and (max-width:850px){
+        width: 45%;
+    }
+    @media only screen and (max-width:750px){
+        width: 50%;
+        margin-bottom: 100px;
+    }
+    @media only screen and (max-width:750px){
+        width: 95%;
+        margin-bottom: 100px;
+    }
 }
 
 .buttons
 {
     display: flex;
     justify-content: space-between;
+    @media only screen and (max-width:750px){
+        flex-direction: column;
+    }
 }
